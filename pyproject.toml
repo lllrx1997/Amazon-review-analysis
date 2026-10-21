@@ -1,0 +1,29 @@
+[project]
+name = "ad-optimizer"
+version = "0.1.0"
+description = "Evidence-based Amazon US review analysis"
+readme = "README.md"
+authors = [
+    { name = "guko", email = "lllrx1997@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.34,<1",
+    "httpx>=0.28,<1",
+    "pydantic-settings>=2.8,<3",
+    "openpyxl>=3.1,<4",
+    "python-dateutil>=2.9,<3",
+    "python-dotenv>=1.2.4",
+    "requests>=2.34.2",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2"]
+
+[project.scripts]
+ad-optimizer = "ad_optimizer:main"
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"

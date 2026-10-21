@@ -1,0 +1,7 @@
+export type Evidence = {review_id: string; quote: string};
+export type Finding = {name: string; description: string; evidence: Evidence[]; possible_cause?: string | null};
+export type Topic = {name: string; evidence: Evidence[]};
+export type Review = {id: string; requested_asin: string; source_asin: string | null; review_url: string | null; rating: number; date: string | null; date_raw: string; title_original: string; body_original: string; title_zh: string; body_zh: string; analyzed: boolean};
+export type Report = {asin: string; product_name: string | null; product_url: string; source: string; scope: string; latest_verified: boolean; limit_verified: boolean; collected_at: string; generated_at: string; model: string; total: number; analyzed_count: number; stars: Record<string, number>; negative_percentage: number | null; issues: Finding[]; praises: Finding[]; neutral_feedback: Finding[]; topics: Topic[]; usage_insights: Finding[]; reviews: Review[]; warnings: string[]};
+export type Task = {id: string; asin: string; status: "fetching" | "analyzing" | "completed" | "partial" | "failed"; stage_message: string; revision?: number; completed_batches?: number; total_batches?: number; processed_reviews?: number; timings?: Record<string, number>; expires_at: string | null; result: Report | null; error: {code: string; message: string} | null};
+export type Health = {configured: boolean; missing: string[]; max_reviews: number; latest_verified: boolean; limit_verified: boolean};
